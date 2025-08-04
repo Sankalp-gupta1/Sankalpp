@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Friendship Hacker Mode</title>
+  <title>Friendship Protocol - Activated</title>
   <style>
     * {
       margin: 0;
@@ -13,114 +13,102 @@
     }
 
     body {
-      background: linear-gradient(-45deg, #000000, #1a1a1a, #0d0d0d, #262626);
-      background-size: 400% 400%;
-      animation: gradientBG 10s ease infinite;
-      color: #00ffee;
+      background-color: black;
+      color: #00ffcc;
       overflow: hidden;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    .glass-card {
-      background: rgba(0, 255, 255, 0.05);
-      border: 2px solid rgba(0, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 30px #00ffee33, 0 0 60px #00ffee22 inset;
-      border-radius: 15px;
-      padding: 40px;
-      max-width: 600px;
-      text-align: center;
-      transform: perspective(1000px) rotateY(0deg);
-      transition: transform 0.6s ease;
-    }
-
-    .glass-card:hover {
-      transform: perspective(1000px) rotateY(5deg);
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      text-shadow: 0 0 5px #00ffee, 0 0 15px #00ffee;
-      margin-bottom: 20px;
-    }
-
-    .typewriter {
-      font-size: 1.2rem;
-      min-height: 150px;
+    .terminal {
+      background: rgba(0, 255, 255, 0.08);
+      border: 1px solid #00ffcc33;
+      box-shadow: 0 0 20px #00ffcc33, inset 0 0 10px #00ffcc44;
+      padding: 30px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 700px;
+      height: 400px;
+      overflow-y: auto;
       white-space: pre-wrap;
-      color: #00ffff;
-      text-shadow: 0 0 3px #00ffee;
+      font-size: 1rem;
+      line-height: 1.5rem;
     }
 
-    .glowline {
-      font-weight: bold;
-      color: #0ff;
-      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-      animation: flicker 0.2s infinite alternate;
+    .title {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffff;
     }
 
-    @keyframes flicker {
-      from {opacity: 1;}
-      to {opacity: 0.7;}
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background-color: #00ffcc;
+      animation: blink 0.8s infinite;
     }
 
-    .bottom {
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #777;
-      letter-spacing: 1px;
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.8rem;
+      color: #00ffee99;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="glass-card">
-    <h1 class="glowline">🧠 Hacker Dosti Protocol</h1>
-    <div class="typewriter" id="typewriterText"></div>
-    <div class="bottom">~ Open Terminal: "Friendship_Day.exe"</div>
-  </div>
+  <div class="title">🧠 CODE-BOND INITIATED</div>
+  <div class="terminal" id="terminal"></div>
+  <footer>~ Just Code. Just Bond. Just Friends. 💻</footer>
 
   <script>
-    const lines = [
-      "🔓 Accessing encrypted connection...",
-      "🛰️ Pinging: JustFriend.exe",
-      "⚠️ STATUS: Friendship Overload Detected!",
-      "💾 Uploading Emotions...",
-      "🛡️ Firewall Bypassed: Best Friend Confirmed.",
-      "💣 Injecting Loyalty → 100%",
-      "👁‍🗨 Surveillance Active: Dosti Never Dies.",
-      "📡 Final Message: 'Kabhi chhod ke mat jana bro/sis...'"
+    const terminalLines = [
+      "🔍 Scanning connection...",
+      "✅ Terminal Sync with FriendNode[001] established.",
+      "📁 Loading Memories: [Coding Nights, Debugging Talks, Git Fights]",
+      "🔒 Friendship Protocol Version: 1.0.0 - Authenticated ✅",
+      "🛠 Deploying Trust Modules...",
+      "🚫 Romance flag = false;",
+      "💬 Console.log(\"Bro-level connection active 🔗\")",
+      "⚡ Collaboration Mode: ON | Ego: OFF",
+      "🧠 Intelligence Match: 100%",
+      "📡 Transmitting: Respect, Humor, Late-night Code Dumps...",
+      "🧬 DOSTI >> ROMANCE? = TRUE;",
+      "🎯 Final Note: You + Me = 404 Error Not Found Elsewhere."
     ];
 
-    let index = 0;
-    let charIndex = 0;
-    const speed = 40;
-    const typewriterDiv = document.getElementById("typewriterText");
+    const terminal = document.getElementById("terminal");
+    let line = 0;
+    let char = 0;
 
-    function typeLine() {
-      if (index < lines.length) {
-        if (charIndex < lines[index].length) {
-          typewriterDiv.innerHTML += lines[index].charAt(charIndex);
-          charIndex++;
-          setTimeout(typeLine, speed);
+    function typeTerminal() {
+      if (line < terminalLines.length) {
+        if (char < terminalLines[line].length) {
+          terminal.innerHTML += terminalLines[line].charAt(char);
+          char++;
+          setTimeout(typeTerminal, 30);
         } else {
-          typewriterDiv.innerHTML += "\n";
-          index++;
-          charIndex = 0;
-          setTimeout(typeLine, 400);
+          terminal.innerHTML += "\n";
+          line++;
+          char = 0;
+          setTimeout(typeTerminal, 300);
         }
+      } else {
+        terminal.innerHTML += "\n> Friendship Terminal: ACTIVE <span class='cursor'></span>";
       }
     }
 
-    typeLine();
+    typeTerminal();
   </script>
 </body>
 </html>
